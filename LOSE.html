@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAMBLING</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 60%;  /* Width of the GIF */
+      height: 60%; /* Height of the GIF */
+    }
+
+    /* Define the clickable area inside the GIF */
+    .click-area {
+      position: absolute;
+      top: 18%; /* Position the clickable area to the center */
+      left: 73%;
+      width: 60px;  /* Size of the clickable area */
+      height: 65px;  /* Size of the clickable area */
+      background-color: rgba(255, 255, 255, 0); /* Semi-transparent overlay */
+      cursor: pointer;
+      transform: translate(-50%, -50%); /* Center the clickable area */
+    }
+
+    /* Initial state of the gif: paused (show first frame) */
+    .gif {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      visibility: visible;
+    }
+
+    /* Invisible GIF before play */
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Static first frame of the GIF (as an image) -->
+    <img src="slotstill.jpg" alt="Interactive GIF" class="gif" id="gif" />
+    <div class="click-area" id="click-area"></div>
+  </div>
+
+  <script>
+    // Get the GIF and the clickable area
+    const gif = document.getElementById('gif');
+    const clickArea = document.getElementById('click-area');
+
+    // Store the path to the animated GIF
+    const gifSrc = "LOSE.gif";  // Replace with the path to your animated GIF
+
+    // Function to handle the click event
+    clickArea.addEventListener('click', function() {
+      // Make the first frame GIF visible
+      gif.src = gifSrc;  // Change source to the animated GIF
+      gif.classList.remove('hidden');  // Make the GIF visible
+
+      // Listen for the GIF to finish playing (this won't be perfect but works in many cases)
+      // Delay redirection to ensure the GIF is visible for a moment
+      setTimeout(function() {
+        window.location.href = "BROKE.html";  // Replace with your target URL
+      }, 3000);  // Adjust this time based on the GIF length (in milliseconds)
+    });
+  </script>
+</body>
+</html>
